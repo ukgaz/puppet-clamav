@@ -92,7 +92,7 @@ class clamav::params {
         'ClamdSocket'              => 'tcp:127.0.0.1',
         'LogSyslog'                => 'yes',
       }
-
+     } 
     } else {
       # ### user vars ####
       $user              = 'clam'
