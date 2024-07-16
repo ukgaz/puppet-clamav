@@ -79,10 +79,6 @@ class clamav::params {
 
       # ### RHEL9/Centos9
       if versioncmp($::operatingsystemmajrelease, '9') >= 0 {
-        $freshclam_service = 'clamav-freshclam'
-      } else {
-        $freshclam_service = undef
-      }
 
       # ### clamav_milter vars ####
       $clamav_milter_package     = 'clamav-milter'
