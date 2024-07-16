@@ -77,6 +77,26 @@ class clamav::params {
         'LogSyslog'                => 'yes',
       }
 
+      # ### RHEL9/Centos9
+      if versioncmp($::operatingsystemmajrelease, '9') >= 0 {
+        $freshclam_service = 'clamav-freshclam'
+      } else {
+        $freshclam_service = undef
+      }
+
+      # ### clamav_milter vars ####
+      $clamav_milter_package     = 'clamav-milter'
+      $clamav_milter_version     = 'installed'
+      $clamav_milter_config      = '/etc/mail/clamav-milter.conf'
+      $clamav_milter_service     = 'clamav-milter'
+      $clamav_milter_options     = {}
+      $clamav_milter_default_options = {
+        'User'                     => 'clamilt',
+        'MilterSocket'             => 'inet:8890@localhost',
+        'ClamdSocket'              => 'tcp:127.0.0.1',
+        'LogSyslog'                => 'yes',
+      }
+
     } else {
       # ### user vars ####
       $user              = 'clam'
